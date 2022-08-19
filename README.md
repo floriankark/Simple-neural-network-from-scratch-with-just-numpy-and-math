@@ -3,7 +3,7 @@
 ## Description
 This is the first part of a series of projects that will eventually end in a self made library to build neural networks with a variety of layers so that I will be able to have a neural network that solves MNIST or even more complicated problems. But first I start at the very beginning, a single layer linear neural network that solves a simple classification problem. 
 
-## The Problem
+## Generating Data
 Let's start by having a look at the data and the problem we want to solve. Therefore I generate two bivariat normal distributed point clouds X1 and X2 and give each of them a label stored in y.
 
 ``` bash
@@ -28,3 +28,45 @@ plt.show()
 <p align="center"> 
     <img width=400 src="./visualization/generatedData.png" alt="generated data">
 </p>
+Now the goal is to teach our network to separate the two clusters with a straight line as good as possible
+
+## Implementing the Neural Network
+
+```bash
+class linearNet:
+    
+    def __init__(self, d):
+        self.w = np.random.normal(scale = np.sqrt(d), size=(d,1))
+        self.b = 0
+
+    def output(self, X):
+        return X @ self.w + self.b
+
+    def grad(self, X, y_true, dloss_function):
+        output = self.output(X)
+        y_true = y_true.reshape(-1,1)
+        dloss = dloss_function(y_true, output)
+
+        grad_w = (dloss * X).mean(axis=0).reshape(-1,1)
+        grad_b = dloss.mean()
+
+        return grad_w, grad_b
+    
+    def fit(self, X_train, y_train, epochs, learning_rate, loss_function, dloss_function):
+    
+        samples = len(X_train)
+
+        for i in range(epochs):
+            loss = 0
+            
+            for j in range(samples):
+                grad_w, grad_b = net.grad(X_train, y_train, dloss_function)
+
+                net.w -= learning_rate * grad_w
+                net.b -= learning_rate * grad_b
+
+                output = net.output(X_train)[:,0]
+                
+                loss = loss_function(y_train, output)
+                accuracy = compute_accuracy(y_train, output)
+```
