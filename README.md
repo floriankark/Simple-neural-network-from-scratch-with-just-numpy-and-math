@@ -25,3 +25,6 @@ scatter = plt.scatter(X_test[:,0], X_test[:,1], c=y_test)
 plt.legend(*scatter.legend_elements(), loc=4)
 plt.show()
 ```
+<p align="center"> 
+    <img src="./visuals/generatedData.png" alt="generated data">
+</p>
