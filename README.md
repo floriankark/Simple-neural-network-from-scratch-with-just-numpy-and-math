@@ -26,5 +26,5 @@ plt.legend(*scatter.legend_elements(), loc=4)
 plt.show()
 ```
 <p align="center"> 
-    <img src="./visuals/generatedData.png" alt="generated data">
+    <img src="./visualization/generatedData.png" alt="generated data">
 </p>
