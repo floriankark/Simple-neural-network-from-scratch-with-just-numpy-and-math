@@ -52,7 +52,7 @@ class linearNet:
 
         return grad_w, grad_b
     
-    def fit(self, X_train, y_train, epochs, learning_rate, loss_function, dloss_function):
+    def fit(self, X_train, y_train, epochs, learning_rate, dloss_function):
     
         samples = len(X_train)
 
@@ -64,9 +64,4 @@ class linearNet:
 
                 net.w -= learning_rate * grad_w
                 net.b -= learning_rate * grad_b
-
-                output = net.output(X_train)[:,0]
-                
-                loss = loss_function(y_train, output)
-                accuracy = compute_accuracy(y_train, output)
 ```
