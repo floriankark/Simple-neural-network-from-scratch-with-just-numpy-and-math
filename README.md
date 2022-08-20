@@ -10,6 +10,7 @@ Next I will list the steps we will go trough:
 4. Using gradient descent and a learning rate
 5. Training our model
 6. Computing the accuracy of our model and tweaking it
+7. Testing the model on test data
 
 
 ## Generating Toy Data
@@ -148,10 +149,14 @@ Let's see what loss we get
 <p align="center"> 
     <img width=400 src="./visualization/lossHistory.png" alt="generated data">
 </p>
+```bash
+Most recent loss is 0.23330806841097143
+```
+That looks great, our loss is steadily going down, that means we approach some minima in our gradient descent. 
 
 ## Computing the accuracy
 
-We can compare the output labels and the true labels very easily in the following way
+To get the accuracy we can compare the output labels and the true labels. That is very easily done in the following way
 ```bash
 def compute_accuracy(y_true, output): 
     y_pred = np.sign(output) #negative values will be labeled -1 and positive ones 1
@@ -160,4 +165,31 @@ def compute_accuracy(y_true, output):
 For our model we get the following accuracy
 <p align="center"> 
     <img width=400 src="./visualization/accuracyHistory.png" alt="generated data">
+</p>
+```bash
+Most recent accuracy is 97.0%
+```
+Awesome, we only classify 3% of our 200 trainings points wrongly. That means only 6 Points. Since we have non separateable clusters and know it is therefore impossible to get 100% accuracy, the result is great.
+
+## Testing the model
+
+Now we test our model on the test data and see how it does. We use our trained neural network we called "net" and let it return the output for the test data.
+```bash
+test_output = net.output(X_test)[:,0]
+print("The accuracy on test data is "+str(compute_accuracy(y_test, test_output)*100)+"%")
+```
+and we get 
+```bash
+The accuracy on test data is 98.0%
+```
+Wow, that's even better than on the training data which is very unusual. We got lucky with the generated points here. Most often the model will perform slightly worse on the test data than on the training data.
+Because I like to visualize results, let's see how it decided wich test points belong to what class:
+<p align="center"> 
+    <img width=400 src="./visualization/decisionBoundary.png" alt="generated data">
+</p>
+The test points are colored in their true label color, so you see which ones got classified wrongly.
+
+Here you see how certain it was. The lighter the color the more uncertain the model is with the decision to give the point that label:
+<p align="center"> 
+    <img width=400 src="./visualization/contourPlot.png" alt="generated data">
 </p>
