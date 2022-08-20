@@ -18,7 +18,6 @@ Let's start by having a look at the data and the problem we want to solve. There
 
 ``` bash
 import numpy as np
-import matplotlib.pyplot as plt
 
 def generate_data(n):
     X1 = np.random.multivariate_normal([1,2], [[1,0], [0,1]], int(n/2))
@@ -195,3 +194,5 @@ Here you see how certain it was. The lighter the color the more uncertain the mo
 <p align="center"> 
     <img width=400 src="./visualization/contourPlot.png" alt="generated data">
 </p>
+
+You might wonder how I created these plots. I used matplotlib.pyplot and calculated the losses and accuracy every epoch to eventually get a list with all the values to put them into a plot. The decision boundary and contour plot are more complex but if you know how to create and use a meshgrid it should be easy to understand. All the code can be found under Simple-neural-network-from-scratch-with-just-numpy-and-math/code/
