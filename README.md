@@ -64,6 +64,8 @@ def mse(y_true, output):
     return np.mean(np.power(y_true-output, 2))
 ```
 
+I already worked on other loss functions to get a better performance and understanding for the network. The hinge loss is already added to the code file with all the losses and can easily be exchanged. I will add more loss functions later and add explainations for them here.
+
 ## Using gradient descent
 
 Now we know how far away our output, the predicted labels, is from the true labels. To make use of this information and change w and b to have a better prediction we use gradient descent. That means we calculate the derivative of our loss function mse and use it to get the gradient of w and b which we will use to adjust our current w and b. 
