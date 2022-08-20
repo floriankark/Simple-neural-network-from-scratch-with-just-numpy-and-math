@@ -197,4 +197,4 @@ Here you see how certain it was. The lighter the color the more uncertain the mo
     <img width=400 src="./visualization/contourPlot.png" alt="generated data">
 </p>
 
-You might wonder how I created these plots. I used matplotlib.pyplot and calculated the losses and accuracy every epoch to eventually get a list with all the values to put them into a plot. The decision boundary and contour plot are more complex but if you know how to create and use a meshgrid it should be easy to understand. All the code can be found under Simple-neural-network-from-scratch-with-just-numpy-and-math/code/
+You might wonder how I created these plots. I used matplotlib.pyplot and calculated the losses and accuracy every epoch to eventually get a list with all the values to put them into a plot. The decision boundary and contour plot are more complex but if you know how to create and use a meshgrid it should be easy to understand. All the code can be found [here](https://github.com/floriankark/Simple-neural-network-from-scratch-with-just-numpy-and-math/tree/main/code)
