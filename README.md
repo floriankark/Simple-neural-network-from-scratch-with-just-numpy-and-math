@@ -166,6 +166,7 @@ For our model we get the following accuracy
 <p align="center"> 
     <img width=400 src="./visualization/accuracyHistory.png" alt="generated data">
 </p>
+
 ```bash
 Most recent accuracy is 97.0%
 ```
