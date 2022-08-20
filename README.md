@@ -151,9 +151,8 @@ Let's see what loss we get
     <img width=400 src="./visualization/lossHistory.png" alt="generated data">
 </p>
 
-```bash
-Most recent loss is 0.23330806841097143
-```
+> Most recent loss is 0.23330806841097143
+
 That looks great, our loss is steadily going down, that means we approach some minima in our gradient descent. 
 
 ## Computing the accuracy
