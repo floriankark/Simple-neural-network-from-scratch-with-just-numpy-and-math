@@ -149,6 +149,7 @@ Let's see what loss we get
 <p align="center"> 
     <img width=400 src="./visualization/lossHistory.png" alt="generated data">
 </p>
+
 ```bash
 Most recent loss is 0.23330806841097143
 ```
