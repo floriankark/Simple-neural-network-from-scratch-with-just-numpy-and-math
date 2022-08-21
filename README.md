@@ -174,7 +174,7 @@ Let's see what loss we get
 Most recent loss is 0.0011624983493338035
 ```
 
-That looks great, our loss is steadily going down, that means we approach some minima in our gradient descent. 
+That looks great, our loss is steadily going down, that means we approach some minima in our gradient descent. That is beacause batch gradient descent is great for convex or relatively smooth error manifolds. Here we move directly towards an optimum solution.
 
 ## Computing the accuracy
 
