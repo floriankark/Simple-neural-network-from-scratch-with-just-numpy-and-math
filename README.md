@@ -171,7 +171,7 @@ Let's see what loss we get
 </p>
 
 ```bash
-Most recent loss is 0.23330806841097143
+Most recent loss is 0.0011624983493338035
 ```
 
 That looks great, our loss is steadily going down, that means we approach some minima in our gradient descent. 
