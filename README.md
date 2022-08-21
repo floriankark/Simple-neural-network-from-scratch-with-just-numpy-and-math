@@ -72,13 +72,19 @@ We will use a type of gradient descent called **batch gradient descent**. That m
 
 Quick recap, we know how far away our output, the predicted labels, are from the true labels. To make use of this information and change w and b to have a better prediction we use gradient descent. That means we calculate the derivative of our loss function with respect to w and b. The two derivatives are now called gradient. (Note: When we have multiple derivatives of one function, they are called a gradient). 
 Let's have a look at the math and then translate the results into code:
+Note that the output is y_hat and the mse is e.
 
 <p align="center"> 
     <img width=800 src="./visualization/gradientMse.png">
 </p>
 
-The derivative of mse is
+The last to equations of the math above are our gradients. We will define the derivative of the mse separately, which is only 2*(output - y_true) and take the mean for grad_w (= de/dw) and grad_b (= de/db) separately. Note that in the above definitions we are only considering a single output node. That is there is one output per sample.
+But because we use **batch** gradient descent we have more than one output node (multiple outputs) for a given input. In that case we have to average the squared error over the samples but also over the number of output nodes.
+
 ```bash
+def mse(y_true, output):
+    return np.mean(np.power(output-y_true, 2))/y_true.size
+
 def dmse(y_true, output):
     return 2*(output-y_true)/y_true.size
 ```
