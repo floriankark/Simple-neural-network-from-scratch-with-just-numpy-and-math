@@ -61,23 +61,32 @@ This network needs to know now how to adjust w and b. After every time it calcul
 
 ```bash
 def mse(y_true, output):
-    return np.mean(np.power(y_true-output, 2))
+    return np.mean(np.power(output-y_true, 2))
 ```
 
 I already worked on other loss functions to get a better performance and understanding for the network. The hinge loss is already added to the code file with all the losses and can easily be exchanged. I will add more loss functions later and add explainations for them here.
 
 ## Using gradient descent
 
-Now we know how far away our output, the predicted labels, is from the true labels. To make use of this information and change w and b to have a better prediction we use gradient descent. That means we calculate the derivative of our loss function mse and use it to get the gradient of w and b which we will use to adjust our current w and b. 
-The derivative of the mean squared error is
+We will use a type of gradient descent called **batch gradient descent**. That means all the training data is taken into consideration to adjust w and b. We take the average of the gradients of all the training examples and then use that mean gradient to update our parameters. That way we get just one step of gradient descent in one epoch. If we had a huge dataset, we would need to compute all the data to take just one step. That is very inefficient. So for simplicity sake I will use batch gradient descent but I wouldn't recommend it for every dataset/ml-problem.
 
+Quick recap, we know how far away our output, the predicted labels, are from the true labels. To make use of this information and change w and b to have a better prediction we use gradient descent. That means we calculate the derivative of our loss function with respect to w and b. The two derivatives are now called gradient. (Note: When we have multiple derivatives of one function, they are called a gradient). 
+Let's have a look at the math and then translate the results into code:
+
+The derivative of mse is
 ```bash
-def dmse(y_true, y_pred):
-    return 2*(y_pred-y_true)/y_true.size
+def dmse(y_true, output):
+    return 2*(output-y_true)/y_true.size
 ```
-Note that I irgnored the np.mean. You will see why in the next part.
+and the gradients are
+```bash
+grad_w = (dloss * X).mean(axis=0).reshape(-1,1)
+grad_b = dloss.mean()
+```
 
-We will add the gradient function to our linearNet class:
+Note that I ignored the np.mean. You will see why in the next part.
+
+We will add the gradient python function to our linearNet class:
 The inputs are X (later it is our training data) the true labels of this data  and the derivative of our loss function.
 What are we doing here now in detail? 
 First we calculate the labels based on our current w and b.
@@ -87,30 +96,30 @@ Lastly we use it to calculate the gradients of w and b. Here you see why we didn
 
 
 ```bash
-    def grad(self, X, y_true, dloss_function):
-        output = self.output(X)
-        y_true = y_true.reshape(-1,1)
-        dloss = dloss_function(y_true, output)
+def grad(self, X, y_true, dloss_function):
+    output = self.output(X)
+    y_true = y_true.reshape(-1,1)
+    dloss = dloss_function(y_true, output)
 
-        grad_w = (dloss * X).mean(axis=0).reshape(-1,1)
-        grad_b = dloss.mean()
+    grad_w = (dloss * X).mean(axis=0).reshape(-1,1)
+    grad_b = dloss.mean()
 
-        return grad_w, grad_b
+    return grad_w, grad_b
 ```
 
 This was the most complicated Part. Now we just need to take these two values to adjust the current w and b
 We take our w and b of the Neural Network and subtract the grad_w and grad_b fom it, but before we can enhance or weaken the impact of the gradients with the learning rate. With different learning rates you might find different minima, there is no real way of knowing for certain what the best value for the learning rate is to find the global minima. I encourage you to copy the code an play around with it and try different values.
 
 ```bash
-    w -= learning_rate * grad_w
-    b -= learning_rate * grad_b
+w -= learning_rate * grad_w
+b -= learning_rate * grad_b
 ```
 ## Training the model
 
 Let's finish our model by defining a fit function that trains the model and takes all the relevant inputs like the network,the loss and derivative, the learning rate and how many epochs you want to go through the data. Then our final model looks like that
 
 ```bash
-    class linearNet:
+class linearNet:
     
     def __init__(self, d):
         self.w = np.random.normal(scale = np.sqrt(d), size=(d,1))
