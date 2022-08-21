@@ -74,7 +74,7 @@ Quick recap, we know how far away our output, the predicted labels, are from the
 Let's have a look at the math and then translate the results into code:
 
 <p align="center"> 
-    <img width=400 src="./visualization/gradientMse.png">
+    <img width=800 src="./visualization/gradientMse.png">
 </p>
 
 The derivative of mse is
