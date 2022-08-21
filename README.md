@@ -71,7 +71,7 @@ I already worked on other loss functions to get a better performance and underst
 We will use a type of gradient descent called **batch gradient descent**. That means all the training data is taken into consideration to adjust w and b. We take the average of the gradients of all the training examples and then use that mean gradient to update our parameters. That way we get just one step of gradient descent in one epoch. If we had a huge dataset, we would need to compute all the data to take just one step. That is very inefficient. So for simplicity sake I will use batch gradient descent but I wouldn't recommend it for every dataset/ml-problem.
 
 Quick recap, we know how far away our output, the predicted labels, are from the true labels. To make use of this information and change w and b to have a better prediction we use gradient descent. That means we calculate the derivative of our loss function with respect to w and b. The two derivatives are now called gradient. (Note: When we have multiple derivatives of one function, they are called a gradient). 
-Let's have a look at the math and then translate the results into code:
+Let's have a look at the math and then translate the results into code.
 Note that the output is y_hat and the mse is e.
 
 <p align="center"> 
