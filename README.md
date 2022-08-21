@@ -73,6 +73,10 @@ We will use a type of gradient descent called **batch gradient descent**. That m
 Quick recap, we know how far away our output, the predicted labels, are from the true labels. To make use of this information and change w and b to have a better prediction we use gradient descent. That means we calculate the derivative of our loss function with respect to w and b. The two derivatives are now called gradient. (Note: When we have multiple derivatives of one function, they are called a gradient). 
 Let's have a look at the math and then translate the results into code:
 
+<p align="center"> 
+    <img width=400 src="./visualization/gradientMse.png">
+</p>
+
 The derivative of mse is
 ```bash
 def dmse(y_true, output):
