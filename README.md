@@ -57,7 +57,7 @@ class linearNet:
 ```
 ## Defining a loss function
 
-This network needs to know now how to adjust w and b. After every time it calculates an output from the training data we will calculate the error to the true labels also known as loss. You probably have heard of the popular mean squared error (mse). If not pause and google it to understand the idea behind it. Basically we calculate error = mean((predicted_labels - true_lables)^2). The predicted_lables are our output and the true_lables are y_true. In python it looks like this
+This network needs to know now how to adjust w and b. After every time it calculates an output from the training data we will calculate the error to the true labels also known as loss. You probably have heard of the popular mean squared error (mse). If not pause and google it to understand the idea behind it. Basically we square the difference between the predicted lables and the true lables to penalize large differences and get a vector with all the individula errors. We then take the mean of that vector and get a single value as an output, our error. In python it looks like this
 
 ```bash
 def mse(y_true, output):
