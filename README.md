@@ -57,14 +57,12 @@ class linearNet:
 ```
 ## Defining a loss function
 
-This network needs to know now how to adjust w and b. After every time it calculates an output from the training data we will calculate the error to the true labels also known as loss. You probably have heard of the popular mean squared error (mse). If not pause and google it to understand the idea behind it. Basically we calculate error = mean((true_lables - predicted_labels)^2). The predicted_lables are our output. In python it looks like
+This network needs to know now how to adjust w and b. After every time it calculates an output from the training data we will calculate the error to the true labels also known as loss. You probably have heard of the popular mean squared error (mse). If not pause and google it to understand the idea behind it. Basically we calculate error = mean((true_lables - predicted_labels)^2). The predicted_lables are our output. In python it looks like this
 
 ```bash
 def mse(y_true, output):
     return np.mean(np.power(output-y_true, 2))
 ```
-
-I already worked on other loss functions to get a better performance and understanding for the network. The hinge loss is already added to the code file with all the losses and can easily be exchanged. I will add more loss functions later and add explainations for them here.
 
 ## Using gradient descent
 
