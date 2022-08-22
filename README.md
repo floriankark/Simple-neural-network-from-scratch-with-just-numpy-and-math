@@ -41,7 +41,7 @@ Now the goal is to teach our network to separate the two clusters with a straigh
 
 ## Implementing the Neural Network
 
-I am assuming you have a first semester level of calculus and linear algebra and know python and numpy. We will start very simple. To reach our goal we need to teach our model a linear graph. We know that a line in a coordinate system is defined as y = x * w + b with x being the input, y the output, w the weight and b the bias. Since the x is given we need to find the right w and b. So thats what the neural net will learn. 
+I am assuming you have a first semester level of calculus linear algebra and stochastic and know some python and numpy. It is very helpful if you have an understanding of machine learning algorithms or a very basic idea of neural networks. We will start very simple. To reach our goal we need to teach our model a linear function. We know that a line in a coordinate system is defined as y = x * w + b with x being the input, y the output, w the weight and b the bias. Since the x is given we need to find the right w and b. So thats what the neural net will learn. 
 Now the question is how it will learn w and b. The short answer is: by looking at example points that are labeled. Therefore we will initialise w and b somewhat randomly and give the model a way to tweak them after predicting the labels for all data points and getting feedback in form of an error. This procedure is called supervised learning. 
 Let's start by defining our neural network as a class and initialise w and b and defining the y or output as we will call it. Note that we have the training data X_train given as a 200x2 matrix (200 points in a 2 dimensional Space). That's why we need to make w a vector of size 2x1.
 
