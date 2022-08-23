@@ -70,7 +70,7 @@ We will use a type of gradient descent called **batch gradient descent**. That m
 
 Quick recap, we know how far away our output, the predicted labels, are from the true labels. To make use of this information and change w and b to have a better prediction we use gradient descent. That means we calculate the derivative of our loss function with respect to w and b. The two derivatives are now called gradient. (Note: When we have multiple derivatives of one function, they are called a gradient). 
 Let's have a look at the math and then translate the results into code.
-Note that the output is y_hat and the mse is e.
+Note that the output is $\hat{y}$ and the mse is e.
 
 <p align="center"> 
     <img width=800 src="./visualization/gradientMse.png">
@@ -115,8 +115,8 @@ def grad(self, X, y_true, dloss_function):
     return grad_w, grad_b
 ```
 
-This was the most complicated Part. Now we just need to take these two values to adjust the current w and b
-We take our w and b of the Neural Network and subtract the grad_w and grad_b fom it, but before we can enhance or weaken the impact of the gradients with the learning rate. With different learning rates you might find different minima, there is no real way of knowing for certain what the best value for the learning rate is to find the global minima. I encourage you to copy the code an play around with it and try different values.
+This was the most complicated Part. Now we just need to take these two values to adjust the current w and b.
+We take our w and b of the Neural Network and subtract the grad_w and grad_b from it. We can enhance or weaken the impact of the gradients with the learning rate. With different learning rates you might find different minima, there is no real way of knowing for certain what the best value for the learning rate is to find the global minima. I encourage you to copy the code an play around with it and try different values.
 
 ```bash
 w -= learning_rate * grad_w
